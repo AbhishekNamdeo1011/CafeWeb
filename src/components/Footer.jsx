@@ -6,9 +6,6 @@ import { formatTelLink, formatMailtoLink } from '../utils/formatters';
 export const Footer = () => {
   const { business, contact, social, footer } = siteData;
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const getSocialIcon = (platform) => {
     switch (platform.toLowerCase()) {
@@ -156,13 +153,13 @@ export const Footer = () => {
             </div>
           )}
 
-          <button
-            onClick={scrollToTop}
+          <a
+            href="#hero"
             className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-gold-500 hover:text-dark-bg hover:border-gold-500 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             aria-label="Back to top"
           >
             <ArrowUp size={18} />
-          </button>
+          </a>
         </div>
       </div>
     </footer>

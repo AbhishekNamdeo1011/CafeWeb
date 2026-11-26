@@ -55,7 +55,7 @@ export const Gallery = () => {
         )}
 
         {/* Photo Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div tabIndex={0} role="region" aria-label="Café photos" className="photo-gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredImages.map((item, idx) => (
             <ImageCard key={item.id || idx} item={item} />
           ))}

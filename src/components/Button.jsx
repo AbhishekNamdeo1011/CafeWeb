@@ -29,7 +29,7 @@ export const Button = ({
 
   if (href) {
     return (
-      <a href={href} className={combinedClasses} aria-label={ariaLabel} {...props}>
+      <a href={href} onClick={onClick} className={combinedClasses} aria-label={ariaLabel} {...props}>
         {children}
         {Icon && <Icon size={18} />}
       </a>

@@ -29,8 +29,13 @@ export const SectionHeading = ({
 
       {/* Main Section Title */}
       {title && (
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-[1.12] mb-4 max-w-3xl">
-          {title}
+        <h2 aria-label={title} className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-[1.12] mb-4 max-w-3xl">
+          {title.split(' ').map((word, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && ' '}
+              <span className="word-mask"><span style={{ '--word': index }}>{word}</span></span>
+            </React.Fragment>
+          ))}
         </h2>
       )}
 

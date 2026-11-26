@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Utensils } from 'lucide-react';
+import { Menu, X, Phone, Leaf } from 'lucide-react';
 import { siteData } from '../data/siteData';
 import { formatTelLink } from '../utils/formatters';
 import { Button } from './Button';
@@ -36,20 +36,21 @@ export const Header = () => {
         ? 'bg-dark-surface/90 backdrop-blur-xl border-white/10 py-3 shadow-xl' 
         : 'bg-gradient-to-b from-black/80 to-transparent border-transparent py-4.5'
     }`}>
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+      <div className={`max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-4 ${isMobileMenuOpen ? 'relative z-[60]' : ''}`}>
         {/* Brand Logo / Business Name */}
         <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 text-white group shrink-0" onClick={closeMobileMenu}>
           {business?.logo ? (
             <img src={business.logo} alt={business.name} className="h-9 w-auto object-contain" />
           ) : (
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:border-gold-500/60 transition-colors shrink-0">
-              <Utensils size={18} />
+              <Leaf size={18} />
             </div>
           )}
 
           <div className="flex flex-col">
             <span className="font-serif text-xl sm:text-2xl font-semibold tracking-wide text-white leading-none whitespace-nowrap">
-              {business?.name || "Saffron Courtyard"}
+              <span className="sm:hidden">{siteData.hero?.title || business?.name}</span>
+              <span className="hidden sm:inline">{business?.name}</span>
             </span>
             {business?.tagline && (
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] text-gold-500 mt-1 font-medium truncate max-w-[160px] sm:max-w-[200px]">
@@ -91,14 +92,14 @@ export const Header = () => {
           )}
 
           {reservation?.enabled !== false && (
-            <Button href={bookingHref} className="hidden sm:inline-flex py-2 px-4 sm:px-5 text-xs whitespace-nowrap shrink-0">
+            <div className="hidden sm:block"><Button href={bookingHref} className="py-2 px-4 sm:px-5 text-xs whitespace-nowrap shrink-0">
               {bookingLabel}
-            </Button>
+            </Button></div>
           )}
 
           {/* Mobile & Laptop Drawer Toggle Button */}
           <button
-            className="xl:hidden p-2 text-white hover:text-gold-500 transition-colors cursor-pointer shrink-0"
+            aria-controls="mobile-navigation" className="relative z-[60] xl:hidden p-2 text-white hover:text-gold-500 transition-colors cursor-pointer shrink-0"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
@@ -109,13 +110,13 @@ export const Header = () => {
       </div>
 
       {/* Mobile Drawer Navigation */}
-      <div className={`fixed inset-0 bg-dark-bg z-50 transition-all duration-300 xl:hidden flex flex-col p-8 pt-24 ${
+      <div id="mobile-navigation" data-lenis-prevent data-open={isMobileMenuOpen} inert={!isMobileMenuOpen} className={`fixed inset-0 h-dvh overflow-y-auto bg-dark-bg z-50 transition-all duration-300 xl:hidden flex flex-col p-8 pt-24 ${
         isMobileMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'
       }`}>
         <div className="flex flex-col h-full justify-between">
           <ul className="flex flex-col gap-6">
             {navigation?.map((item, index) => (
-              <li key={index}>
+              <li key={index} style={{ "--link-order": index }}>
                 <a
                   href={item.href}
                   className="font-serif text-3xl text-white hover:text-gold-500 transition-colors block"

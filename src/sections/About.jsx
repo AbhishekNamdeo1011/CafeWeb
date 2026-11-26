@@ -76,7 +76,7 @@ export const About = () => {
           {about.image && (
             <div className="lg:col-span-5 relative mt-6 lg:mt-0">
               {/* Asymmetric Offset Frame */}
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[3/4] bg-dark-card">
+              <div data-scroll-photo className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[3/4] bg-dark-card">
                 <ImageWithFallback
                   src={about.image}
                   alt={about.title}

@@ -54,12 +54,12 @@ export const Reservation = () => {
           {submitted ? (
             <div className="text-center py-12 flex flex-col items-center">
               <CheckCircle size={56} className="text-gold-500 mb-4" />
-              <h3 className="font-serif text-3xl text-white font-medium mb-2">Request Received</h3>
+              <h3 className="font-serif text-3xl text-white font-medium mb-2">Your visit preview</h3>
               <p className="text-gray-300 text-base max-w-md mb-6 font-light leading-relaxed">
-                Thank you, {formData.name || 'valued guest'}. Our concierge team will confirm your booking via phone/email shortly.
+                {formData.name}, your selection is a table for {formData.partySize} on {formData.date} at {formData.timeSlot}. Call <a className="underline" href={formatTelLink(contact.phone)}>{contact.phone}</a> to book with the café.
               </p>
               <Button onClick={() => setSubmitted(false)} variant="outline">
-                Make Another Booking
+                Edit visit
               </Button>
             </div>
           ) : (

@@ -29,6 +29,7 @@ export const Testimonials = () => {
             <TestimonialCard key={item.id || idx} item={item} />
           ))}
         </div>
+        {testimonials.url && <a href={testimonials.url} className="block w-fit mx-auto mt-8 underline underline-offset-4 text-gold-500">Read more reviews on District</a>}
       </div>
     </section>
   );

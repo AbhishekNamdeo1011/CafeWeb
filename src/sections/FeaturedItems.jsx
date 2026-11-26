@@ -35,7 +35,7 @@ export const FeaturedItems = () => {
 
         <div className="flex justify-center">
           <Button href="#menu" variant="outline" icon={ArrowRight}>
-            View Full Seasonal Menu
+            Explore food & drink
           </Button>
         </div>
       </div>

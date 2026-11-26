@@ -164,8 +164,8 @@ export const Contact = () => {
           {/* Interactive Google Map iframe */}
           <div className="w-full h-80 sm:h-96 relative bg-dark-surface">
             <iframe
-              title="Saffron Courtyard Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.942368926017!2d77.43265887596131!3d23.245199607986065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4273574c8b6b%3A0xb35a7702f3a61c32!2sDB%20City%20Mall%2C%20Arera%20Hills%2C%20Bhopal%2C%20Madhya%20Pradesh%20462011!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              title={siteData.business.name + " location map"}
+              src={contact.embedUrl}
               width="100%"
               height="100%"
               style={{ border: 0, filter: 'grayscale(0.5) invert(0.9) hue-rotate(180deg) contrast(1.1)' }}
